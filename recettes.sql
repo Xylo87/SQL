@@ -35,5 +35,6 @@ WHERE nom LIKE "%salade%"
 
 
 
+5- Insérer une nouvelle recette : « Pâtes à la carbonara » dont la durée de réalisation est de 20 min avec les instructions de votre choix. 
 
-
+INSERT INTO recette VALUES ("11", "Pâtes à la carbonara", "20", "Cuire les pâtes, préparer la sauce, assembler les 2", "2")
