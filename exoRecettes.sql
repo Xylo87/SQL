@@ -72,5 +72,14 @@ WHERE recette.idRecette = 5
 
 9- Afficher le détail de la recette n°5 (liste des ingrédients, quantités et prix)
 
+SELECT ingredient.nom, ingredientsrecette.quantite, ingredientsrecette.uniteMsr, ingredient.prix
+FROM ingredient
+INNER JOIN ingredientsrecette ON ingredientsrecette.idIngredient = ingredient.idIngredient
+INNER JOIN recette ON recette.idRecette = ingredientsrecette.idRecette
+WHERE recette.idRecette = 5
+
+
+
+10- Ajouter un ingrédient en base de données : Poivre, unité : cuillère à café, prix : 2.5 €
 
 
