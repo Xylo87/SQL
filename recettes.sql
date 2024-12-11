@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `ingredient` (
   PRIMARY KEY (`idIngredient`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recettes.ingredient : ~0 rows (environ)
+-- Listage des données de la table recettes.ingredient : ~29 rows (environ)
 INSERT INTO `ingredient` (`idIngredient`, `nom`, `prix`) VALUES
 	(1, 'Tomates', 1.5),
 	(2, 'Mozza', 2),
@@ -71,13 +71,11 @@ CREATE TABLE IF NOT EXISTS `ingredientsrecette` (
   CONSTRAINT `FK_ingredientsrecette_recette` FOREIGN KEY (`idRecette`) REFERENCES `recette` (`idRecette`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recettes.ingredientsrecette : ~0 rows (environ)
+-- Listage des données de la table recettes.ingredientsrecette : ~40 rows (environ)
 INSERT INTO `ingredientsrecette` (`quantite`, `uniteMsr`, `idRecette`, `idIngredient`) VALUES
 	(2, 'CaS', 1, 3),
 	(3, 'Pièce(s)', 1, 1),
 	(1, 'Pièce(s)', 1, 2),
-	(3, 'Pièce(s)', 2, 6),
-	(10, 'g', 2, 7),
 	(250, 'g', 3, 8),
 	(400, 'g', 3, 9),
 	(1, 'Pièce(s)', 3, 10),
@@ -128,11 +126,10 @@ CREATE TABLE IF NOT EXISTS `recette` (
   CONSTRAINT `FK_recette_type_plat` FOREIGN KEY (`idTypePlat`) REFERENCES `type_plat` (`idTypePlat`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recettes.recette : ~0 rows (environ)
+-- Listage des données de la table recettes.recette : ~10 rows (environ)
 INSERT INTO `recette` (`idRecette`, `nom`, `tpsPrepaMin`, `instructions`, `idTypePlat`) VALUES
 	(1, 'Salade de tomates/mozza', 10, 'Couper les tomates et la mozzarella en rondelles.\nDisposer dans une assiette, alterner tomate et mozzarella.\nAjouter le basilic, saler et poivrer.\nArroser d\'huile d\'olive et servir.', 1),
-	(2, 'Omelette', 5, 'Casser les œufs dans un bol, ajouter le sel et le poivre, et battre.\nFaire fondre le beurre dans une poêle à feu moyen.\nVerser les œufs battus dans la poêle.\nCuire pendant environ 2-3 minutes jusqu\'à ce que l\'omelette soit cuite des deux côtés.', 2),
-	(3, 'Pâtes à la tomate', 15, 'Faire cuire les pâtes selon les instructions du paquet.\nPendant ce temps, hacher l\'ail et le faire revenir dans l\'huile d\'olive.\nAjouter la sauce tomate et laisser mijoter 5-10 minutes.\nMélanger les pâtes égouttées avec la sauce tomate, saler et poivrer avant de servir.', 2),
+	(3, 'Pâtes à la tomate fraîche', 15, 'Faire cuire les pâtes selon les instructions du paquet.\nPendant ce temps, hacher l\'ail et le faire revenir dans l\'huile d\'olive.\nAjouter la sauce tomate et laisser mijoter 5-10 minutes.\nMélanger les pâtes égouttées avec la sauce tomate, saler et poivrer avant de servir.', 2),
 	(4, 'Toast à l\'avocat', 10, 'Faire griller les tranches de pain.\nCouper l\'avocat en deux, retirer le noyau et écraser la chair dans un bol.\nAjouter le jus de citron, saler et poivrer.\nÉtaler l\'avocat écrasé sur les tranches de pain grillé et servir.', 1),
 	(5, 'Crêpes', 15, 'Mélanger la farine, le lait, l\'œuf et le sucre pour obtenir une pâte lisse.\nChauffer une poêle avec un peu de beurre et verser une petite quantité de pâte.\nCuire chaque crêpe 1-2 minutes de chaque côté, puis servir.', 3),
 	(6, 'Salade quinoa', 20, 'Cuire le quinoa selon les instructions du paquet.\nCouper le concombre, les tomates cerises et la feta en morceaux.\nMélanger tous les ingrédients dans un grand saladier.\nAjouter l\'huile d\'olive, le jus de citron, saler et poivrer avant de servir.', 2),
@@ -149,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `type_plat` (
   PRIMARY KEY (`idTypePlat`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recettes.type_plat : ~0 rows (environ)
+-- Listage des données de la table recettes.type_plat : ~3 rows (environ)
 INSERT INTO `type_plat` (`idTypePlat`, `nom`) VALUES
 	(1, 'Entrée'),
 	(2, 'Plat de résistance'),

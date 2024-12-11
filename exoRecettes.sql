@@ -38,3 +38,25 @@ WHERE nom LIKE "%salade%"
 5- Insérer une nouvelle recette : « Pâtes à la carbonara » dont la durée de réalisation est de 20 min avec les instructions de votre choix. 
 
 INSERT INTO recette VALUES ("11", "Pâtes à la carbonara", "20", "Cuire les pâtes, préparer la sauce, assembler les 2", "2")
+
+
+
+6- Modifier  le  nom  de  la  recette  ayant  comme  identifiant  id_recette  =  3  (nom  de  la  recette  à  votre 
+convenance)
+
+UPDATE recette
+SET recette.nom = "Pâtes à la tomate fraîche"
+WHERE recette.idRecette = 3
+
+
+
+7- Supprimer la recette n°2 de la base de données
+
+DELETE FROM ingredientsrecette
+WHERE ingredientsrecette.idRecette = 2
+
+DELETE FROM recette
+WHERE recette.idRecette = 2
+
+
+
