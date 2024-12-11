@@ -60,3 +60,17 @@ WHERE recette.idRecette = 2
 
 
 
+8- Afficher le prix total de la recette n°5
+
+SELECT recette.nom, ROUND(SUM(ingredient.prix), 2)
+FROM ingredient
+INNER JOIN ingredientsrecette ON ingredientsrecette.idIngredient = ingredient.idIngredient
+INNER JOIN recette ON recette.idRecette = ingredientsrecette.idRecette
+WHERE recette.idRecette = 5
+
+
+
+9- Afficher le détail de la recette n°5 (liste des ingrédients, quantités et prix)
+
+
+
