@@ -112,7 +112,36 @@ INNER JOIN ingredient ON ingredient.idIngredient = ingredientsrecette.idIngredie
 WHERE ingredient.nom LIKE "%poulet%"
 
 
+
 14- Mettez à jour toutes les recettes en diminuant leur temps de préparation de 5 minutes
+
+UPDATE recette
+SET recette.tpsPrepaMin = recette.tpsPrepaMin - 5
+
+
+
+15- Afficher les recettes qui ne nécessitent pas d’ingrédients coûtant plus de 2€ par unité de mesure
+
+-- SELECT recette.nom
+-- FROM recette
+-- INNER JOIN ingredientsrecette ON ingredientsrecette.idRecette = recette.idRecette
+-- INNER JOIN ingredient ON ingredient.idIngredient = ingredientsrecette.idIngredient
+-- WHERE ingredient.prix <= 2
+-- GROUP BY recette.nom
+
+
+
+16- Afficher la / les recette(s) les plus rapides à préparer
+
+SELECT recette.nom, recette.tpsPrepaMin
+FROM recette 
+WHERE recette.tpsPrepaMin IN (
+	SELECT MIN(recette.tpsPrepaMin) 
+	FROM recette
+)
+
+
+
 
 
 
