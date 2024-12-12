@@ -122,12 +122,14 @@ SET recette.tpsPrepaMin = recette.tpsPrepaMin - 5
 
 15- Afficher les recettes qui ne nécessitent pas d’ingrédients coûtant plus de 2€ par unité de mesure
 
--- SELECT recette.nom
--- FROM recette
--- INNER JOIN ingredientsrecette ON ingredientsrecette.idRecette = recette.idRecette
--- INNER JOIN ingredient ON ingredient.idIngredient = ingredientsrecette.idIngredient
--- WHERE ingredient.prix <= 2
--- GROUP BY recette.nom
+SELECT recette.nom
+FROM recette
+WHERE recette.idRecette NOT IN (
+	SELECT recette.idRecette
+	FROM recette
+	INNER JOIN ingredientsrecette ON ingredientsrecette.idRecette = recette.idRecette
+	INNER JOIN ingredient ON ingredient.idIngredient = ingredientsrecette.idIngredient
+	WHERE ingredient.prix > 2)
 
 
 
@@ -142,6 +144,42 @@ WHERE recette.tpsPrepaMin IN (
 
 
 
+17- Trouver les recettes qui ne nécessitent aucun ingrédient (par exemple la recette de la tasse d’eau 
+chaude qui consiste à verser de l’eau chaude dans une tasse)
+
+SELECT recette.nom
+FROM recette
+WHERE recette.idRecette NOT IN (
+	SELECT ingredientsrecette.idRecette
+	FROM ingredientsrecette
+)
 
 
 
+18- Trouver les ingrédients qui sont utilisés dans au moins 3 recettes 
+
+SELECT ingredient.nom, COUNT(ingredientsrecette.idRecette)
+FROM ingredient 
+INNER JOIN ingredientsrecette ON ingredientsrecette.idIngredient = ingredient.idIngredient
+GROUP BY ingredient.nom
+HAVING COUNT(ingredientsrecette.idRecette) > 3 
+
+
+
+19- Ajouter un nouvel ingrédient à une recette spécifique
+
+INSERT INTO ingredient (nom, prix) VALUES ("Cannelle", 10)
+INSERT INTO ingredientsrecette (quantite, UniteMsr, idRecette, idIngredient) 
+VALUES (1, "Pièce(s)", (SELECT recette.idRecette FROM recette WHERE recette.nom LIKE "%Tasse%"), (SELECT ingredient.idIngredient FROM ingredient WHERE ingredient.nom = "Cannelle"))
+
+
+
+20- Bonus : Trouver la recette la plus coûteuse de la base de données (il peut y avoir des ex aequo, il est 
+donc exclu d’utiliser la clause LIMIT)
+
+SELECT recette.nom, ROUND(SUM(ingredient.prix), 2) AS prix
+FROM ingredient
+INNER JOIN ingredientsrecette ON ingredientsrecette.idIngredient = ingredient.idIngredient
+INNER JOIN recette ON recette.idRecette = ingredientsrecette.idRecette
+GROUP BY recette.nom
+HAVING SUM(ingredient.prix) = MAX(prix)

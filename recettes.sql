@@ -23,11 +23,11 @@ USE `recettes`;
 CREATE TABLE IF NOT EXISTS `ingredient` (
   `idIngredient` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL DEFAULT '0',
-  `prix` float NOT NULL,
+  `prix` float NOT NULL DEFAULT '0',
   PRIMARY KEY (`idIngredient`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recettes.ingredient : ~29 rows (environ)
+-- Listage des données de la table recettes.ingredient : ~30 rows (environ)
 INSERT INTO `ingredient` (`idIngredient`, `nom`, `prix`) VALUES
 	(1, 'Tomates', 1.5),
 	(2, 'Mozza', 2),
@@ -38,7 +38,7 @@ INSERT INTO `ingredient` (`idIngredient`, `nom`, `prix`) VALUES
 	(9, 'Sauce tomate', 1),
 	(10, 'Ail', 0.1),
 	(11, 'Pain', 0.5),
-	(12, 'Avocat', 1.5),
+	(12, 'Avocat', 2.5),
 	(13, 'Citron', 0.3),
 	(14, 'Farine', 0.2),
 	(15, 'Lait', 0.4),
@@ -57,7 +57,8 @@ INSERT INTO `ingredient` (`idIngredient`, `nom`, `prix`) VALUES
 	(28, 'Fraise', 1),
 	(29, 'Lardons', 2.5),
 	(30, 'Crème', 0.8),
-	(31, 'Parmesan', 2);
+	(31, 'Parmesan', 2),
+	(32, 'Cannelle', 10);
 
 -- Listage de la structure de table recettes. ingredientsrecette
 CREATE TABLE IF NOT EXISTS `ingredientsrecette` (
@@ -71,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `ingredientsrecette` (
   CONSTRAINT `FK_ingredientsrecette_recette` FOREIGN KEY (`idRecette`) REFERENCES `recette` (`idRecette`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recettes.ingredientsrecette : ~40 rows (environ)
+-- Listage des données de la table recettes.ingredientsrecette : ~41 rows (environ)
 INSERT INTO `ingredientsrecette` (`quantite`, `uniteMsr`, `idRecette`, `idIngredient`) VALUES
 	(2, 'CaS', 1, 3),
 	(3, 'Pièce(s)', 1, 1),
@@ -112,7 +113,8 @@ INSERT INTO `ingredientsrecette` (`quantite`, `uniteMsr`, `idRecette`, `idIngred
 	(150, 'g', 11, 29),
 	(2, 'Pièce(s)', 11, 6),
 	(100, 'ml', 11, 30),
-	(50, 'g', 11, 31);
+	(50, 'g', 11, 31),
+	(1, 'Pièce(s)', 12, 32);
 
 -- Listage de la structure de table recettes. recette
 CREATE TABLE IF NOT EXISTS `recette` (
@@ -124,20 +126,21 @@ CREATE TABLE IF NOT EXISTS `recette` (
   PRIMARY KEY (`idRecette`),
   KEY `idTypePlat` (`idTypePlat`),
   CONSTRAINT `FK_recette_type_plat` FOREIGN KEY (`idTypePlat`) REFERENCES `type_plat` (`idTypePlat`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recettes.recette : ~10 rows (environ)
+-- Listage des données de la table recettes.recette : ~11 rows (environ)
 INSERT INTO `recette` (`idRecette`, `nom`, `tpsPrepaMin`, `instructions`, `idTypePlat`) VALUES
-	(1, 'Salade de tomates/mozza', 10, 'Couper les tomates et la mozzarella en rondelles.\nDisposer dans une assiette, alterner tomate et mozzarella.\nAjouter le basilic, saler et poivrer.\nArroser d\'huile d\'olive et servir.', 1),
-	(3, 'Pâtes à la tomate fraîche', 15, 'Faire cuire les pâtes selon les instructions du paquet.\nPendant ce temps, hacher l\'ail et le faire revenir dans l\'huile d\'olive.\nAjouter la sauce tomate et laisser mijoter 5-10 minutes.\nMélanger les pâtes égouttées avec la sauce tomate, saler et poivrer avant de servir.', 2),
-	(4, 'Toast à l\'avocat', 10, 'Faire griller les tranches de pain.\nCouper l\'avocat en deux, retirer le noyau et écraser la chair dans un bol.\nAjouter le jus de citron, saler et poivrer.\nÉtaler l\'avocat écrasé sur les tranches de pain grillé et servir.', 1),
-	(5, 'Crêpes', 15, 'Mélanger la farine, le lait, l\'œuf et le sucre pour obtenir une pâte lisse.\nChauffer une poêle avec un peu de beurre et verser une petite quantité de pâte.\nCuire chaque crêpe 1-2 minutes de chaque côté, puis servir.', 3),
-	(6, 'Salade quinoa', 20, 'Cuire le quinoa selon les instructions du paquet.\nCouper le concombre, les tomates cerises et la feta en morceaux.\nMélanger tous les ingrédients dans un grand saladier.\nAjouter l\'huile d\'olive, le jus de citron, saler et poivrer avant de servir.', 2),
-	(7, 'Banane au miel', 10, 'Préchauffer le four à 180°C.\nCouper les bananes en deux dans le sens de la longueur.\nPlacer les bananes sur une plaque de cuisson, arroser de miel et saupoudrer de cannelle.\nFaire cuire au four pendant 5-7 minutes jusqu\'à ce qu\'elles soient dorées.\n', 3),
-	(8, 'Porridge à la compote de pommes', 10, 'Faire chauffer le lait dans une casserole.\nAjouter les flocons d\'avoine et laisser cuire 3-4 minutes en remuant.\nAjouter la compote de pommes et le sucre, mélanger et servir.', 3),
-	(9, 'Poêlée de légumes', 20, 'Couper tous les légumes en dés.\nFaire chauffer l\'huile d\'olive dans une poêle et y faire revenir l\'oignon.\nAjouter les autres légumes, saler, poivrer, et cuire 10-15 minutes jusqu\'à ce qu\'ils soient tendres.', 2),
-	(10, 'Yogourt aux fruits', 5, 'Verser le yogourt dans un bol.\nAjouter les fruits frais coupés en morceaux.\nArroser de miel et servir.', 3),
-	(11, 'Pâtes à la carbonara', 20, 'Cuire les pâtes, préparer la sauce, assembler les 2', 2);
+	(1, 'Salade de tomates/mozza', 5, 'Couper les tomates et la mozzarella en rondelles.\nDisposer dans une assiette, alterner tomate et mozzarella.\nAjouter le basilic, saler et poivrer.\nArroser d\'huile d\'olive et servir.', 1),
+	(3, 'Pâtes à la tomate fraîche', 10, 'Faire cuire les pâtes selon les instructions du paquet.\nPendant ce temps, hacher l\'ail et le faire revenir dans l\'huile d\'olive.\nAjouter la sauce tomate et laisser mijoter 5-10 minutes.\nMélanger les pâtes égouttées avec la sauce tomate, saler et poivrer avant de servir.', 2),
+	(4, 'Toast à l\'avocat', 5, 'Faire griller les tranches de pain.\nCouper l\'avocat en deux, retirer le noyau et écraser la chair dans un bol.\nAjouter le jus de citron, saler et poivrer.\nÉtaler l\'avocat écrasé sur les tranches de pain grillé et servir.', 1),
+	(5, 'Crêpes', 10, 'Mélanger la farine, le lait, l\'œuf et le sucre pour obtenir une pâte lisse.\nChauffer une poêle avec un peu de beurre et verser une petite quantité de pâte.\nCuire chaque crêpe 1-2 minutes de chaque côté, puis servir.', 3),
+	(6, 'Salade quinoa', 15, 'Cuire le quinoa selon les instructions du paquet.\nCouper le concombre, les tomates cerises et la feta en morceaux.\nMélanger tous les ingrédients dans un grand saladier.\nAjouter l\'huile d\'olive, le jus de citron, saler et poivrer avant de servir.', 2),
+	(7, 'Banane au miel', 5, 'Préchauffer le four à 180°C.\nCouper les bananes en deux dans le sens de la longueur.\nPlacer les bananes sur une plaque de cuisson, arroser de miel et saupoudrer de cannelle.\nFaire cuire au four pendant 5-7 minutes jusqu\'à ce qu\'elles soient dorées.\n', 3),
+	(8, 'Porridge à la compote de pommes', 5, 'Faire chauffer le lait dans une casserole.\nAjouter les flocons d\'avoine et laisser cuire 3-4 minutes en remuant.\nAjouter la compote de pommes et le sucre, mélanger et servir.', 3),
+	(9, 'Poêlée de légumes', 15, 'Couper tous les légumes en dés.\nFaire chauffer l\'huile d\'olive dans une poêle et y faire revenir l\'oignon.\nAjouter les autres légumes, saler, poivrer, et cuire 10-15 minutes jusqu\'à ce qu\'ils soient tendres.', 2),
+	(10, 'Yogourt aux fruits', 0, 'Verser le yogourt dans un bol.\nAjouter les fruits frais coupés en morceaux.\nArroser de miel et servir.', 3),
+	(11, 'Pâtes à la carbonara', 15, 'Cuire les pâtes, préparer la sauce, assembler les 2', 2),
+	(12, 'Tasse d\'eau chaude', 1, 'Verser de l\'eau chaude dans une tasse', 2);
 
 -- Listage de la structure de table recettes. type_plat
 CREATE TABLE IF NOT EXISTS `type_plat` (
