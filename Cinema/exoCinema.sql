@@ -106,14 +106,13 @@ GROUP BY personne.sexe
 
 
 k. Liste des acteurs ayant plus de 50 ans (âge révolu et non révolu)
--- >>> question sur celle-ci sur ce qu'entend l'énoncé par "âge non révolu"
 
--- SELECT personne.prenom, personne.nom, DATE_FORMAT(personne.dateNais, "%D %b %Y")
--- FROM personne
--- INNER JOIN acteurice ON acteurice.idPersonne = personne.idPersonne
--- WHERE personne.dateNais < DATE_SUB(NOW(), INTERVAL 50 YEAR)
--- -- WHERE personne.dateNais < DATE_ADD(NOW(), INTERVAL -50 YEAR)
--- ORDER BY personne.dateNais
+SELECT personne.prenom, personne.nom, DATE_FORMAT(personne.dateNais, "%D %b %Y")
+FROM personne
+INNER JOIN acteurice ON acteurice.idPersonne = personne.idPersonne
+WHERE personne.dateNais <= DATE_SUB(NOW(), INTERVAL 50 YEAR)
+-- WHERE personne.dateNais <= DATE_ADD(NOW(), INTERVAL -50 YEAR)
+ORDER BY personne.dateNais
 
 
 
