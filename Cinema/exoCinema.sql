@@ -27,7 +27,7 @@ SELECT film.titre, personne.prenom, personne.nom, DATE_FORMAT(film.annee, "%Y")
 FROM film
 INNER JOIN reali ON reali.idReali = film.idReali
 INNER JOIN personne ON personne.idPersonne = reali.idPersonne
-WHERE personne.nom = "Spielberg"
+WHERE reali.id_realisateur = 5
 
 
 
@@ -36,7 +36,7 @@ d. Nombre de films par genre (classés dans l’ordre décroissant)
 SELECT genre.libelle, COUNT(categorie.idGenre) AS nbFilm
 FROM genre
 INNER JOIN categorie ON categorie.idGenre = genre.idGenre
-GROUP BY genre.libelle
+GROUP BY genre.id_genre
 ORDER BY nbFilm DESC
 
 
