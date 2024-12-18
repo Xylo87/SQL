@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   CONSTRAINT `categorie_ibfk_2` FOREIGN KEY (`idGenre`) REFERENCES `genre` (`idGenre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.categorie : ~19 rows (environ)
+-- Listage des données de la table cinema.categorie : ~22 rows (environ)
 INSERT INTO `categorie` (`idFilm`, `idGenre`) VALUES
 	(1, 1),
 	(3, 1),
@@ -113,18 +113,18 @@ CREATE TABLE IF NOT EXISTS `film` (
 
 -- Listage des données de la table cinema.film : ~12 rows (environ)
 INSERT INTO `film` (`idFilm`, `titre`, `annee`, `duree`, `synopsis`, `note`, `affiche`, `trailer`, `idReali`) VALUES
-	(1, 'Alien', '1979-09-12', 117, 'Une équipe d\'astronautes doit survivre face à une entité extraterrestre.', 9.5, 'https://m.media-amazon.com/images/M/MV5BN2NhMDk2MmEtZDQzOC00MmY5LThhYzAtMDdjZGFjOGZjMjdjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/watch?v=4lRNBd8Vook', 1),
-	(2, 'The Shining', '1980-05-23', 146, 'Un homme devient fou alors qu\'il garde un hôtel isolé avec sa famille.', 9, 'https://m.media-amazon.com/images/M/MV5BZjhjMjA2NTItZmFjOC00ZTg2LTlkODEtMDNjMWM3ZjUxZWY3XkEyXkFqcGc@._V1_.jpg', 'https://www.youtube.com/watch?v=FZQvIJxG9Xs', 2),
-	(3, 'E.T. l\'extra-terrestre', '1982-06-11', 115, 'Un garçon et un extraterrestre se lient d\'amitié alors qu\'ils tentent de fuir des autorités.', 6.5, 'https://m.media-amazon.com/images/M/MV5BYTNhNmY0YWMtMTczYi00MTA0LThhMmUtMTIxYzE0Y2QwMzRlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/watch?v=Jva4IWuDYLM', 3),
-	(4, 'The Thing', '1982-06-25', 109, 'Des scientifiques en Antarctique sont confrontés à une créature capable de prendre l\'apparence de n\'importe qui.', 9, 'https://m.media-amazon.com/images/M/MV5BYTA3NDU5MWEtNTk4Yy00ZDNkLThmZTQtMjU3ZGVhYzAyMzU4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/watch?v=eke95-lTPnY', 4),
-	(5, 'Total Recall', '1990-06-01', 113, 'Un homme découvre que ses souvenirs implantés sont liés à un complot sur Mars.', 8, 'https://m.media-amazon.com/images/M/MV5BZjRlMzBkOGMtMTA1Ny00ZWI4LTkzMDItOGVkNWJkN2E4ZTkwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/watch?v=u-JZb46UZzE', 5),
-	(6, 'The Fly', '1986-08-15', 96, 'Un scientifique se transforme en monstre après une expérience de téléportation qui tourne mal.', 8.5, 'https://m.media-amazon.com/images/M/MV5BOTBlNTliNTItY2VhNS00MjA5LTllYzItMmQyNGRjYTAyZWQxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/watch?v=fj1SHpBsY7w', 6),
-	(7, 'Predator', '1987-06-12', 107, 'Un groupe de commandos se retrouve pris au piège par un extraterrestre chasseur dans la jungle.', 8, 'https://m.media-amazon.com/images/M/MV5BOWEzMDI0MTUtMjQ0Yy00MGRhLWI4YjAtZTgzZTM3NTYxZGJkXkEyXkFqcGc@._V1_.jpg', 'https://www.youtube.com/watch?v=Vo3FmkleTEQ', 7),
-	(8, 'The Silence of the Lambs', '1991-02-14', 118, 'Une jeune agente du FBI cherche l\'aide d\'un tueur en série pour capturer un autre criminel.', 8.5, 'https://m.media-amazon.com/images/M/MV5BNDdhOGJhYzctYzYwZC00YmI2LWI0MjctYjg4ODdlMDExYjBlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/watch?v=6iB21hsprAQ', 8),
-	(9, 'Jurassic Park', '1993-06-11', 127, 'Des scientifiques réaniment des dinosaures pour un parc à thème, mais tout dérape rapidement.', 8.5, 'https://m.media-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/watch?v=bx46tthKXmc', 3),
-	(10, 'Nope', '2022-07-22', 130, 'Deux frères et sœurs tentent de capturer des preuves d\'un phénomène étrange dans leur ferme.', 5, 'https://m.media-amazon.com/images/M/MV5BODRlNWRhZWUtMzdlZC00ZDIyLWFhZjMtYTcxNjI1ZDIwODhjXkEyXkFqcGc@._V1_.jpg', 'https://www.youtube.com/watch?v=In8fuzj3gck', 9),
-	(11, '2001, l\'Odyssée de l\'Espace', '1968-09-27', 149, 'Le film retrace, à travers différentes époques de l\'histoire humaine, le rôle joué dans l\'évolution de l\'humanité par une intelligence inconnue', 8, 'https://m.media-amazon.com/images/M/MV5BNjU0NDFkMTQtZWY5OS00MmZhLTg3Y2QtZmJhMzMzMWYyYjc2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/watch?v=oR_e9y-bka0', 2),
-	(12, 'Running Man', '1987-11-13', 101, 'Running Man est un film de science-fiction où un homme accusé à tort d\'un crime doit participer à un jeu télévisé brutal et mortel, dans lequel des prisonniers sont pourchassés par des chasseurs pour divertir le public.', 6.5, 'https://m.media-amazon.com/images/M/MV5BMDQwYzMwMDItYzFhZC00YjkzLTlmODAtMzg3NDFlNDhhZjYzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/watch?v=pkAN5rGGP1M', 11);
+	(1, 'Alien', '1979-09-12', 117, 'Une équipe d\'astronautes doit survivre face à une entité extraterrestre.', 9.5, 'https://m.media-amazon.com/images/M/MV5BN2NhMDk2MmEtZDQzOC00MmY5LThhYzAtMDdjZGFjOGZjMjdjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/embed/4lRNBd8Vook?si=_tS2cccCDkUsK3Wu', 1),
+	(2, 'The Shining', '1980-05-23', 146, 'Un homme devient fou alors qu\'il garde un hôtel isolé avec sa famille.', 9, 'https://m.media-amazon.com/images/M/MV5BZjhjMjA2NTItZmFjOC00ZTg2LTlkODEtMDNjMWM3ZjUxZWY3XkEyXkFqcGc@._V1_.jpg', 'https://www.youtube.com/embed/FZQvIJxG9Xs?si=ApnzIbdOjdcpVmw8', 2),
+	(3, 'E.T. l\'extra-terrestre', '1982-06-11', 115, 'Un garçon et un extraterrestre se lient d\'amitié alors qu\'ils tentent de fuir des autorités.', 6.5, 'https://m.media-amazon.com/images/M/MV5BYTNhNmY0YWMtMTczYi00MTA0LThhMmUtMTIxYzE0Y2QwMzRlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/embed/Jva4IWuDYLM?si=rZDL6Y_gy0qGfrrv', 3),
+	(4, 'The Thing', '1982-06-25', 109, 'Des scientifiques en Antarctique sont confrontés à une créature capable de prendre l\'apparence de n\'importe qui.', 9, 'https://m.media-amazon.com/images/M/MV5BYTA3NDU5MWEtNTk4Yy00ZDNkLThmZTQtMjU3ZGVhYzAyMzU4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/embed/eke95-lTPnY?si=NQdvL9ljQLJFwKLI', 4),
+	(5, 'Total Recall', '1990-06-01', 113, 'Un homme découvre que ses souvenirs implantés sont liés à un complot sur Mars.', 8, 'https://m.media-amazon.com/images/M/MV5BZjRlMzBkOGMtMTA1Ny00ZWI4LTkzMDItOGVkNWJkN2E4ZTkwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/embed/u-JZb46UZzE?si=0v5drck1SMl-Okwy', 5),
+	(6, 'The Fly', '1986-08-15', 96, 'Un scientifique se transforme en monstre après une expérience de téléportation qui tourne mal.', 8.5, 'https://m.media-amazon.com/images/M/MV5BOTBlNTliNTItY2VhNS00MjA5LTllYzItMmQyNGRjYTAyZWQxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/embed/fj1SHpBsY7w?si=QpKkpU01l3xVgSXa', 6),
+	(7, 'Predator', '1987-06-12', 107, 'Un groupe de commandos se retrouve pris au piège par un extraterrestre chasseur dans la jungle.', 8, 'https://m.media-amazon.com/images/M/MV5BOWEzMDI0MTUtMjQ0Yy00MGRhLWI4YjAtZTgzZTM3NTYxZGJkXkEyXkFqcGc@._V1_.jpg', 'https://www.youtube.com/embed/Vo3FmkleTEQ?si=arls4eKlB-cdTIE5', 7),
+	(8, 'The Silence of the Lambs', '1991-02-14', 118, 'Une jeune agente du FBI cherche l\'aide d\'un tueur en série pour capturer un autre criminel.', 8.5, 'https://m.media-amazon.com/images/M/MV5BNDdhOGJhYzctYzYwZC00YmI2LWI0MjctYjg4ODdlMDExYjBlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/embed/6iB21hsprAQ?si=zTRJXiIe9m4C5aKt', 8),
+	(9, 'Jurassic Park', '1993-06-11', 127, 'Des scientifiques réaniment des dinosaures pour un parc à thème, mais tout dérape rapidement.', 8.5, 'https://m.media-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/embed/bx46tthKXmc?si=vADYKGpJuK8rPB0T', 3),
+	(10, 'Nope', '2022-07-22', 130, 'Deux frères et sœurs tentent de capturer des preuves d\'un phénomène étrange dans leur ferme.', 5, 'https://m.media-amazon.com/images/M/MV5BODRlNWRhZWUtMzdlZC00ZDIyLWFhZjMtYTcxNjI1ZDIwODhjXkEyXkFqcGc@._V1_.jpg', 'https://www.youtube.com/embed/In8fuzj3gck?si=eMGekxijj77qzt2v', 9),
+	(11, '2001, l\'Odyssée de l\'Espace', '1968-09-27', 149, 'Le film retrace, à travers différentes époques de l\'histoire humaine, le rôle joué dans l\'évolution de l\'humanité par une intelligence inconnue', 8, 'https://m.media-amazon.com/images/M/MV5BNjU0NDFkMTQtZWY5OS00MmZhLTg3Y2QtZmJhMzMzMWYyYjc2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/embed/oR_e9y-bka0?si=MBNCT_XIIG6BnWoU', 2),
+	(12, 'Running Man', '1987-11-13', 101, 'Running Man est un film de science-fiction où un homme accusé à tort d\'un crime doit participer à un jeu télévisé brutal et mortel, dans lequel des prisonniers sont pourchassés par des chasseurs pour divertir le public.', 6.5, 'https://m.media-amazon.com/images/M/MV5BMDQwYzMwMDItYzFhZC00YjkzLTlmODAtMzg3NDFlNDhhZjYzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/embed/pkAN5rGGP1M?si=sziW9XZmJMaUTFVd', 11);
 
 -- Listage de la structure de table cinema. genre
 CREATE TABLE IF NOT EXISTS `genre` (
@@ -200,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `personne` (
   PRIMARY KEY (`idPersonne`)
 ) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.personne : ~37 rows (environ)
+-- Listage des données de la table cinema.personne : ~39 rows (environ)
 INSERT INTO `personne` (`idPersonne`, `nom`, `prenom`, `sexe`, `dateNais`, `bio`, `photo`) VALUES
 	(1, 'Scott', 'Ridley', 'H', '1937-11-30', 'A British director and producer, Ridley Scott is known for his groundbreaking work in science fiction and historical epics, with iconic films like Alien, Blade Runner, and Gladiator.', NULL),
 	(2, 'Weaver', 'Sigouney', 'F', '1949-10-08', NULL, 'https://m.media-amazon.com/images/M/MV5BMTk1MTcyNTE3OV5BMl5BanBnXkFtZTcwMTA0MTMyMw@@._V1_.jpg'),
@@ -251,7 +251,7 @@ CREATE TABLE IF NOT EXISTS `reali` (
   CONSTRAINT `reali_ibfk_1` FOREIGN KEY (`idPersonne`) REFERENCES `personne` (`idPersonne`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.reali : ~10 rows (environ)
+-- Listage des données de la table cinema.reali : ~11 rows (environ)
 INSERT INTO `reali` (`idReali`, `idPersonne`) VALUES
 	(1, 1),
 	(7, 17),
@@ -272,7 +272,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   PRIMARY KEY (`idRole`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.role : ~28 rows (environ)
+-- Listage des données de la table cinema.role : ~31 rows (environ)
 INSERT INTO `role` (`idRole`, `personnage`) VALUES
 	(1, 'Ellen Ripley'),
 	(2, 'Dallas'),
