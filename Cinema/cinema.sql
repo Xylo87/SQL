@@ -16,8 +16,8 @@
 
 
 -- Listage de la structure de la base pour cinema_theo
-CREATE DATABASE IF NOT EXISTS `cinema_theo` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `cinema_theo`;
+CREATE DATABASE IF NOT EXISTS `cinema` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `cinema`;
 
 -- Listage de la structure de table cinema_theo. acteurice
 CREATE TABLE IF NOT EXISTS `acteurice` (
