@@ -15,11 +15,11 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Listage de la structure de la base pour cinema_theo
+-- Listage de la structure de la base pour cinema
 CREATE DATABASE IF NOT EXISTS `cinema` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `cinema`;
 
--- Listage de la structure de table cinema_theo. acteurice
+-- Listage de la structure de table cinema. acteurice
 CREATE TABLE IF NOT EXISTS `acteurice` (
   `idActeurice` int NOT NULL AUTO_INCREMENT,
   `idPersonne` int NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `acteurice` (
   CONSTRAINT `acteurice_ibfk_1` FOREIGN KEY (`idPersonne`) REFERENCES `personne` (`idPersonne`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema_theo.acteurice : ~30 rows (environ)
+-- Listage des données de la table cinema.acteurice : ~30 rows (environ)
 INSERT INTO `acteurice` (`idActeurice`, `idPersonne`) VALUES
 	(26, 2),
 	(19, 3),
@@ -61,7 +61,7 @@ INSERT INTO `acteurice` (`idActeurice`, `idPersonne`) VALUES
 	(29, 38),
 	(30, 40);
 
--- Listage de la structure de table cinema_theo. categorie
+-- Listage de la structure de table cinema. categorie
 CREATE TABLE IF NOT EXISTS `categorie` (
   `idFilm` int NOT NULL,
   `idGenre` int NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   CONSTRAINT `categorie_ibfk_2` FOREIGN KEY (`idGenre`) REFERENCES `genre` (`idGenre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema_theo.categorie : ~22 rows (environ)
+-- Listage des données de la table cinema.categorie : ~25 rows (environ)
 INSERT INTO `categorie` (`idFilm`, `idGenre`) VALUES
 	(1, 1),
 	(3, 1),
@@ -81,7 +81,9 @@ INSERT INTO `categorie` (`idFilm`, `idGenre`) VALUES
 	(7, 1),
 	(9, 1),
 	(10, 1),
+	(11, 1),
 	(12, 1),
+	(18, 1),
 	(1, 2),
 	(2, 2),
 	(4, 2),
@@ -90,29 +92,30 @@ INSERT INTO `categorie` (`idFilm`, `idGenre`) VALUES
 	(10, 2),
 	(3, 3),
 	(9, 3),
+	(11, 3),
 	(8, 4),
 	(12, 4),
 	(5, 5),
 	(7, 5),
 	(12, 5);
 
--- Listage de la structure de table cinema_theo. film
+-- Listage de la structure de table cinema. film
 CREATE TABLE IF NOT EXISTS `film` (
   `idFilm` int NOT NULL AUTO_INCREMENT,
   `titre` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `annee` date NOT NULL,
   `duree` int NOT NULL,
-  `synopsis` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `note` varchar(50) NOT NULL,
-  `affiche` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `trailer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `idReali` int NOT NULL,
+  `synopsis` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `note` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `affiche` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `trailer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `idReali` int DEFAULT NULL,
   PRIMARY KEY (`idFilm`),
   KEY `idReali` (`idReali`),
   CONSTRAINT `film_ibfk_1` FOREIGN KEY (`idReali`) REFERENCES `reali` (`idReali`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema_theo.film : ~12 rows (environ)
+-- Listage des données de la table cinema.film : ~13 rows (environ)
 INSERT INTO `film` (`idFilm`, `titre`, `annee`, `duree`, `synopsis`, `note`, `affiche`, `trailer`, `idReali`) VALUES
 	(1, 'Alien', '1979-09-12', 117, 'A space crew faces a deadly extraterrestrial creature that begins hunting them aboard their ship after a distress signal leads them to a mysterious planet.', '9.5/10', 'https://m.media-amazon.com/images/M/MV5BN2NhMDk2MmEtZDQzOC00MmY5LThhYzAtMDdjZGFjOGZjMjdjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/embed/4lRNBd8Vook?si=_tS2cccCDkUsK3Wu', 1),
 	(2, 'The Shining', '1980-05-23', 146, 'A family’s stay at a remote mountain hotel unravels into terror as supernatural forces and a father\'s descent into madness threaten their survival.', '9/10', 'https://m.media-amazon.com/images/M/MV5BZjhjMjA2NTItZmFjOC00ZTg2LTlkODEtMDNjMWM3ZjUxZWY3XkEyXkFqcGc@._V1_.jpg', 'https://www.youtube.com/embed/FZQvIJxG9Xs?si=ApnzIbdOjdcpVmw8', 2),
@@ -125,16 +128,17 @@ INSERT INTO `film` (`idFilm`, `titre`, `annee`, `duree`, `synopsis`, `note`, `af
 	(9, 'Jurassic Park', '1993-06-11', 127, 'A billionaire’s dinosaur theme park turns deadly when the prehistoric creatures escape their enclosures and threaten everyone on the island.', '8.5/10', 'https://m.media-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/embed/bx46tthKXmc?si=vADYKGpJuK8rPB0T', 3),
 	(10, 'Nope', '2022-07-22', 130, 'Siblings running a horse ranch encounter a mysterious UFO and attempt to document its existence while uncovering its terrifying nature.', '5/10', 'https://m.media-amazon.com/images/M/MV5BODRlNWRhZWUtMzdlZC00ZDIyLWFhZjMtYTcxNjI1ZDIwODhjXkEyXkFqcGc@._V1_.jpg', 'https://www.youtube.com/embed/In8fuzj3gck?si=eMGekxijj77qzt2v', 9),
 	(11, '2001 - A space odyssey', '1968-09-27', 149, 'Humanity’s journey through space and time culminates in an existential encounter with an alien intelligence and the evolution of consciousness.', '8/10', 'https://m.media-amazon.com/images/M/MV5BNjU0NDFkMTQtZWY5OS00MmZhLTg3Y2QtZmJhMzMzMWYyYjc2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/embed/oR_e9y-bka0?si=MBNCT_XIIG6BnWoU', 2),
-	(12, 'Running Man', '1987-11-13', 101, 'In a dystopian future, a falsely accused man is forced to participate in a deadly televised game show where survival means freedom.', '7/10', 'https://m.media-amazon.com/images/M/MV5BMDQwYzMwMDItYzFhZC00YjkzLTlmODAtMzg3NDFlNDhhZjYzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/embed/pkAN5rGGP1M?si=sziW9XZmJMaUTFVd', 11);
+	(12, 'Running Man', '1987-11-13', 101, 'In a dystopian future, a falsely accused man is forced to participate in a deadly televised game show where survival means freedom.', '7/10', 'https://m.media-amazon.com/images/M/MV5BMDQwYzMwMDItYzFhZC00YjkzLTlmODAtMzg3NDFlNDhhZjYzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/embed/pkAN5rGGP1M?si=sziW9XZmJMaUTFVd', 11),
+	(18, 'Gattaca', '1997-10-24', 106, 'Gattaca is a 1997 science fiction film directed by Andrew Niccol, exploring a dystopian future where genetic engineering determines one&#039;s fate, and featuring a standout performance by Ethan Hawke as a man striving to defy his predetermined destiny.', '7.5/10', 'https://m.media-amazon.com/images/M/MV5BYjM3NzI0OWMtMzg1ZC00ZGUxLWIyYmYtZjk0NWU2Yjk2ZjMxXkEyXkFqcGc@._V1_.jpg', 'https://www.youtube.com/embed/NIIZ2P-fiyI?si=A_mxUgX15wctTsdF', 13);
 
--- Listage de la structure de table cinema_theo. genre
+-- Listage de la structure de table cinema. genre
 CREATE TABLE IF NOT EXISTS `genre` (
   `idGenre` int NOT NULL AUTO_INCREMENT,
   `libelle` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`idGenre`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema_theo.genre : ~6 rows (environ)
+-- Listage des données de la table cinema.genre : ~6 rows (environ)
 INSERT INTO `genre` (`idGenre`, `libelle`) VALUES
 	(1, 'Science-fiction'),
 	(2, 'Horror'),
@@ -143,7 +147,7 @@ INSERT INTO `genre` (`idGenre`, `libelle`) VALUES
 	(5, 'Action'),
 	(7, 'Comedy');
 
--- Listage de la structure de table cinema_theo. interpretation
+-- Listage de la structure de table cinema. interpretation
 CREATE TABLE IF NOT EXISTS `interpretation` (
   `idFilm` int NOT NULL,
   `idActeurice` int NOT NULL,
@@ -156,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `interpretation` (
   CONSTRAINT `interpretation_ibfk_3` FOREIGN KEY (`idRole`) REFERENCES `role` (`idRole`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema_theo.interpretation : ~32 rows (environ)
+-- Listage des données de la table cinema.interpretation : ~32 rows (environ)
 INSERT INTO `interpretation` (`idFilm`, `idActeurice`, `idRole`) VALUES
 	(3, 1, 8),
 	(4, 2, 10),
@@ -191,19 +195,19 @@ INSERT INTO `interpretation` (`idFilm`, `idActeurice`, `idRole`) VALUES
 	(4, 28, 29),
 	(11, 30, 33);
 
--- Listage de la structure de table cinema_theo. personne
+-- Listage de la structure de table cinema. personne
 CREATE TABLE IF NOT EXISTS `personne` (
   `idPersonne` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `prenom` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `sexe` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `dateNais` date NOT NULL,
+  `sexe` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `dateNais` date DEFAULT NULL,
   `bio` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `photo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`idPersonne`)
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema_theo.personne : ~40 rows (environ)
+-- Listage des données de la table cinema.personne : ~41 rows (environ)
 INSERT INTO `personne` (`idPersonne`, `nom`, `prenom`, `sexe`, `dateNais`, `bio`, `photo`) VALUES
 	(1, 'Scott', 'Ridley', 'H', '1937-11-30', 'A British director and producer, Ridley Scott is known for his groundbreaking work in science fiction and historical epics, with iconic films like Alien, Blade Runner, and Gladiator.', 'https://m.media-amazon.com/images/M/MV5BNDM1OWUyZDktZGJmYS00MjQxLWI1OTItY2M4MWViM2NmOWM0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg'),
 	(2, 'Weaver', 'Sigouney', 'F', '1949-10-08', 'An acclaimed actress known for her iconic role as Ellen Ripley in the Alien franchise, she has become a pioneer for women in science fiction and action films.', 'https://m.media-amazon.com/images/M/MV5BMTk1MTcyNTE3OV5BMl5BanBnXkFtZTcwMTA0MTMyMw@@._V1_.jpg'),
@@ -230,7 +234,7 @@ INSERT INTO `personne` (`idPersonne`, `nom`, `prenom`, `sexe`, `dateNais`, `bio`
 	(23, 'Glenn', 'Scott', 'H', '1941-01-26', 'Likely a confusion with another name; please clarify or specify the correct individual.', 'https://m.media-amazon.com/images/M/MV5BMTU3NzAwMzE1OF5BMl5BanBnXkFtZTYwMjkzOTY0._V1_FMjpg_UX1000_.jpg'),
 	(24, 'Neill', 'Sam', 'H', '1947-09-14', 'A New Zealand actor, Sam Neill is known for his roles in Jurassic Park, The Hunt for Red October, and The Piano.', 'https://m.media-amazon.com/images/M/MV5BMjUyMTU0MzA0MF5BMl5BanBnXkFtZTgwNTA4MTQ4NjM@._V1_FMjpg_UX1000_.jpg'),
 	(25, 'Dern', 'Laura', 'F', '1967-02-10', 'A highly regarded actress known for her roles in Jurassic Park, Blue Velvet, and Marriage Story, earning critical acclaim for her nuanced performances.', 'https://m.media-amazon.com/images/M/MV5BMjI3NzY0MDQxMF5BMl5BanBnXkFtZTcwNzMwMzcyNw@@._V1_FMjpg_UX1000_.jpg'),
-	(26, 'Kaluuya', 'Daniel', 'H', '1989-02-24', ' A British actor, Daniel Kaluuya gained worldwide recognition for his performances in Get Out, Black Panther, and Judas and the Black Messiah, winning an Academy Award.', 'https://m.media-amazon.com/images/M/MV5BOTk1MzgzOTg5OV5BMl5BanBnXkFtZTcwNDQ4NjMxOA@@._V1_FMjpg_UX1000_.jpg'),
+	(26, 'Kaluuya', 'Daniel', 'H', '1989-02-24', 'A British actor, Daniel Kaluuya gained worldwide recognition for his performances in Get Out, Black Panther, and Judas and the Black Messiah, winning an Academy Award.', 'https://m.media-amazon.com/images/M/MV5BOTk1MzgzOTg5OV5BMl5BanBnXkFtZTcwNDQ4NjMxOA@@._V1_FMjpg_UX1000_.jpg'),
 	(27, 'Palmer', 'Keke', 'F', '1993-08-26', 'A versatile actress, singer, and TV host who gained acclaim for her roles in Akeelah and the Bee and Jordan Peele’s Nope.', 'https://m.media-amazon.com/images/M/MV5BZjRjN2NkZTktMjE3My00MzIyLWFkNmMtYjNkN2YyZTgyNTc2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg'),
 	(28, 'Yeun', 'Steven', 'H', '1983-12-24', 'A Korean-American actor, Steven Yeun is best known for his role in The Walking Dead and for his critically acclaimed performance in Minari.', 'https://m.media-amazon.com/images/M/MV5BZTdkZDYwNzQtNmJhOC00NGRkLWJmOTgtZDM1NGE0ZDFmYTdmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg'),
 	(29, 'Kubrick', 'Stanley', 'H', '1928-07-26', 'A visionary director known for his meticulous craftsmanship and masterpieces such as 2001: A Space Odyssey, The Shining, and A Clockwork Orange.', 'https://m.media-amazon.com/images/M/MV5BMDZlOGFiZmYtZDRmZi00M2RkLTg1MDgtYjUwYjJiYmNiZjhmXkEyXkFqcGc@._V1_.jpg'),
@@ -244,18 +248,19 @@ INSERT INTO `personne` (`idPersonne`, `nom`, `prenom`, `sexe`, `dateNais`, `bio`
 	(37, 'Russell', 'Kurt', 'H', '1951-03-17', 'A charismatic actor renowned for his roles in iconic films like Escape from New York, The Thing, and Big Trouble in Little China.', 'https://m.media-amazon.com/images/M/MV5BMTk3MjkxNzQwMV5BMl5BanBnXkFtZTYwNDk4ODM1._V1_FMjpg_UX1000_.jpg'),
 	(38, 'Eastwood', 'Clint', 'H', '1930-05-31', 'An American actor, director, and producer, Clint Eastwood became famous for his roles in Dirty Harry and The Good, the Bad and the Ugly, later achieving success as a director with films like Unforgiven and Million Dollar Baby.', 'https://m.media-amazon.com/images/M/MV5BMTAxNzc4MDAyMjheQTJeQWpwZ15BbWU4MDM2NjE5OTYz._V1_.jpg'),
 	(39, 'Glaser', 'Paul Michael', 'H', '1943-03-25', 'An American actor, director, and producer, Paul Michael Glaser is best known for his role as Detective Starsky in the TV series Starsky & Hutch and for directing the film The Running Man.\n\n\n', 'https://m.media-amazon.com/images/M/MV5BMTc5MjM0NDQ3MV5BMl5BanBnXkFtZTYwNjIxNzU2._V1_FMjpg_UX1000_.jpg'),
-	(40, '9000', 'HAL', 'H', '2001-01-01', '"I\'m sorry Dave, i\'m afraid i can\'t do that"', 'https://www.comicbookreligion.com/img/h/a/HAL_9000.jpg');
+	(40, '9000', 'HAL', 'H', '2001-01-01', '"I\'m sorry Dave, i\'m afraid i can\'t do that"', 'https://www.comicbookreligion.com/img/h/a/HAL_9000.jpg'),
+	(44, 'Niccol', 'Andrew', 'H', '1964-06-11', 'Andrew Niccol is a New Zealand-born filmmaker and screenwriter, best known for directing thought-provoking science fiction films such as Gattaca and The Truman Show, exploring themes of identity, control, and society.', 'https://m.media-amazon.com/images/M/MV5BMTI5ODQ2ODU2M15BMl5BanBnXkFtZTcwNjM2NDg5Mg@@._V1_FMjpg_UX1000_.jpg');
 
--- Listage de la structure de table cinema_theo. reali
+-- Listage de la structure de table cinema. reali
 CREATE TABLE IF NOT EXISTS `reali` (
   `idReali` int NOT NULL AUTO_INCREMENT,
   `idPersonne` int NOT NULL,
   PRIMARY KEY (`idReali`),
   UNIQUE KEY `idPersonne` (`idPersonne`),
   CONSTRAINT `reali_ibfk_1` FOREIGN KEY (`idPersonne`) REFERENCES `personne` (`idPersonne`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema_theo.reali : ~11 rows (environ)
+-- Listage des données de la table cinema.reali : ~12 rows (environ)
 INSERT INTO `reali` (`idReali`, `idPersonne`) VALUES
 	(1, 1),
 	(7, 17),
@@ -267,16 +272,17 @@ INSERT INTO `reali` (`idReali`, `idPersonne`) VALUES
 	(9, 34),
 	(6, 36),
 	(10, 38),
-	(11, 39);
+	(11, 39),
+	(13, 44);
 
--- Listage de la structure de table cinema_theo. role
+-- Listage de la structure de table cinema. role
 CREATE TABLE IF NOT EXISTS `role` (
   `idRole` int NOT NULL AUTO_INCREMENT,
   `personnage` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`idRole`)
 ) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema_theo.role : ~32 rows (environ)
+-- Listage des données de la table cinema.role : ~32 rows (environ)
 INSERT INTO `role` (`idRole`, `personnage`) VALUES
 	(1, 'Ellen Ripley'),
 	(2, 'Dallas'),
