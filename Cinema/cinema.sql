@@ -109,11 +109,11 @@ CREATE TABLE IF NOT EXISTS `film` (
   `note` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `affiche` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `trailer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `idReali` int DEFAULT NULL,
+  `idReali` int NOT NULL,
   PRIMARY KEY (`idFilm`),
   KEY `idReali` (`idReali`),
   CONSTRAINT `film_ibfk_1` FOREIGN KEY (`idReali`) REFERENCES `reali` (`idReali`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table cinema.film : ~13 rows (environ)
 INSERT INTO `film` (`idFilm`, `titre`, `annee`, `duree`, `synopsis`, `note`, `affiche`, `trailer`, `idReali`) VALUES
@@ -129,7 +129,7 @@ INSERT INTO `film` (`idFilm`, `titre`, `annee`, `duree`, `synopsis`, `note`, `af
 	(10, 'Nope', '2022-07-22', 130, 'Siblings running a horse ranch encounter a mysterious UFO and attempt to document its existence while uncovering its terrifying nature.', '5/10', 'https://m.media-amazon.com/images/M/MV5BODRlNWRhZWUtMzdlZC00ZDIyLWFhZjMtYTcxNjI1ZDIwODhjXkEyXkFqcGc@._V1_.jpg', 'https://www.youtube.com/embed/In8fuzj3gck?si=eMGekxijj77qzt2v', 9),
 	(11, '2001 - A space odyssey', '1968-09-27', 149, 'Humanity’s journey through space and time culminates in an existential encounter with an alien intelligence and the evolution of consciousness.', '8/10', 'https://m.media-amazon.com/images/M/MV5BNjU0NDFkMTQtZWY5OS00MmZhLTg3Y2QtZmJhMzMzMWYyYjc2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/embed/oR_e9y-bka0?si=MBNCT_XIIG6BnWoU', 2),
 	(12, 'Running Man', '1987-11-13', 101, 'In a dystopian future, a falsely accused man is forced to participate in a deadly televised game show where survival means freedom.', '7/10', 'https://m.media-amazon.com/images/M/MV5BMDQwYzMwMDItYzFhZC00YjkzLTlmODAtMzg3NDFlNDhhZjYzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/embed/pkAN5rGGP1M?si=sziW9XZmJMaUTFVd', 11),
-	(18, 'Gattaca', '1997-10-24', 106, 'Gattaca is a 1997 science fiction film directed by Andrew Niccol, exploring a dystopian future where genetic engineering determines one&#039;s fate, and featuring a standout performance by Ethan Hawke as a man striving to defy his predetermined destiny.', '7.5/10', 'https://m.media-amazon.com/images/M/MV5BYjM3NzI0OWMtMzg1ZC00ZGUxLWIyYmYtZjk0NWU2Yjk2ZjMxXkEyXkFqcGc@._V1_.jpg', 'https://www.youtube.com/embed/NIIZ2P-fiyI?si=A_mxUgX15wctTsdF', 13);
+	(18, 'Gattaca', '1997-10-24', 106, 'Gattaca is a 1997 science fiction film directed by Andrew Niccol, exploring a dystopian future where genetic engineering determines one&#039;s fate, and featuring a standout performance by Ethan Hawke as a man striving to defy his predetermined destiny.', '7.5/10', 'https://m.media-amazon.com/images/M/MV5BZjQxNTc3YzQtZDA5ZC00MmM5LWE3NGYtMGE0Yjk3MDYwODVlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://www.youtube.com/embed/NIIZ2P-fiyI?si=A_mxUgX15wctTsdF', 13);
 
 -- Listage de la structure de table cinema. genre
 CREATE TABLE IF NOT EXISTS `genre` (
@@ -207,7 +207,7 @@ CREATE TABLE IF NOT EXISTS `personne` (
   PRIMARY KEY (`idPersonne`)
 ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.personne : ~41 rows (environ)
+-- Listage des données de la table cinema.personne : ~40 rows (environ)
 INSERT INTO `personne` (`idPersonne`, `nom`, `prenom`, `sexe`, `dateNais`, `bio`, `photo`) VALUES
 	(1, 'Scott', 'Ridley', 'H', '1937-11-30', 'A British director and producer, Ridley Scott is known for his groundbreaking work in science fiction and historical epics, with iconic films like Alien, Blade Runner, and Gladiator.', 'https://m.media-amazon.com/images/M/MV5BNDM1OWUyZDktZGJmYS00MjQxLWI1OTItY2M4MWViM2NmOWM0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg'),
 	(2, 'Weaver', 'Sigouney', 'F', '1949-10-08', 'An acclaimed actress known for her iconic role as Ellen Ripley in the Alien franchise, she has become a pioneer for women in science fiction and action films.', 'https://m.media-amazon.com/images/M/MV5BMTk1MTcyNTE3OV5BMl5BanBnXkFtZTcwMTA0MTMyMw@@._V1_.jpg'),
@@ -260,7 +260,7 @@ CREATE TABLE IF NOT EXISTS `reali` (
   CONSTRAINT `reali_ibfk_1` FOREIGN KEY (`idPersonne`) REFERENCES `personne` (`idPersonne`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.reali : ~12 rows (environ)
+-- Listage des données de la table cinema.reali : ~11 rows (environ)
 INSERT INTO `reali` (`idReali`, `idPersonne`) VALUES
 	(1, 1),
 	(7, 17),
