@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   CONSTRAINT `categorie_ibfk_2` FOREIGN KEY (`idGenre`) REFERENCES `genre` (`idGenre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.categorie : ~25 rows (environ)
+-- Listage des données de la table cinema.categorie : ~28 rows (environ)
 INSERT INTO `categorie` (`idFilm`, `idGenre`) VALUES
 	(1, 1),
 	(3, 1),
@@ -207,7 +207,7 @@ CREATE TABLE IF NOT EXISTS `personne` (
   PRIMARY KEY (`idPersonne`)
 ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.personne : ~40 rows (environ)
+-- Listage des données de la table cinema.personne : ~41 rows (environ)
 INSERT INTO `personne` (`idPersonne`, `nom`, `prenom`, `sexe`, `dateNais`, `bio`, `photo`) VALUES
 	(1, 'Scott', 'Ridley', 'H', '1937-11-30', 'A British director and producer, Ridley Scott is known for his groundbreaking work in science fiction and historical epics, with iconic films like Alien, Blade Runner, and Gladiator.', 'https://m.media-amazon.com/images/M/MV5BNDM1OWUyZDktZGJmYS00MjQxLWI1OTItY2M4MWViM2NmOWM0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg'),
 	(2, 'Weaver', 'Sigouney', 'F', '1949-10-08', 'An acclaimed actress known for her iconic role as Ellen Ripley in the Alien franchise, she has become a pioneer for women in science fiction and action films.', 'https://m.media-amazon.com/images/M/MV5BMTk1MTcyNTE3OV5BMl5BanBnXkFtZTcwMTA0MTMyMw@@._V1_.jpg'),
@@ -260,7 +260,7 @@ CREATE TABLE IF NOT EXISTS `reali` (
   CONSTRAINT `reali_ibfk_1` FOREIGN KEY (`idPersonne`) REFERENCES `personne` (`idPersonne`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.reali : ~11 rows (environ)
+-- Listage des données de la table cinema.reali : ~12 rows (environ)
 INSERT INTO `reali` (`idReali`, `idPersonne`) VALUES
 	(1, 1),
 	(7, 17),
