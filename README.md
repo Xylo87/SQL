@@ -36,7 +36,8 @@ Différentes commandes **SQL** sont exploitées au sein de ces exercices, entre 
 
 ## 3. Utilisation
 
-Les fichiers `exoRecettes.sql` et `exoCinema.sql` contiennent des requêtes **SQL** spécifiques.
+- "Looping" permet de visualiser le projet en mode **MCD** ou **MLD** via un bouton dédié, en haut à gauche de l'interface
+- Les fichiers `exoRecettes.sql` et `exoCinema.sql` contiennent des requêtes **SQL** spécifiques.
 Pour test, sélectionnez la base de données adéquate dans HeidiSQL, entrez la code SQL dans l'onglet "Requête" et appuyez sur F9.
 
 ## 4. Auteur
