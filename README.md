@@ -1,4 +1,4 @@
-# ⚡⛁ Série de Base de données SQL et d'exercices de requêtes associés
+# ⚡🛢 Série de Base de données SQL et d'exercices de requêtes associés
 
 ## 1. Description
 Exercices pratiques de Modélisation conceptuelle de données/Modèle logique de données (**MCD/MLD**), de création de bases de données **SQL** et de requêtes spécifiques.
