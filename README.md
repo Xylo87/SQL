@@ -1,7 +1,7 @@
 # ⚡🛢 Série de Base de données SQL et d'exercices de requêtes associés
 
 ## 1. Description
-Exercices pratiques de Modélisation conceptuelle de données/Modèle logique de données (**MCD/MLD**), de création de bases de données **SQL** et de requêtes spécifiques.
+Exercices pratiques de Modélisation conceptuelle de données/Modèle logique de données (**MCD/MLD**), de création de bases de données **MySQL** et de requêtes spécifiques.
 La base de données *Recettes* est élaborée autour d'une dizaine de recettes de cuisine (ingrédients, type de plat etc.).
 La base de données *Cinéma* est élaborée autour d'une dizaine de films ainsi que d'acteurs/actrices et réalisateurs associés.
 Différentes commandes **SQL** sont exploitées au sein de ces exercices, entre autres :
